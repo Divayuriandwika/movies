@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import Add from '../component/Add'
+import Add from '../component/Addform'
 import Header from '../component/Header'
 
 function Copyright() {

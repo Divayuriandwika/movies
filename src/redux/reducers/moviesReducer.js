@@ -3,13 +3,16 @@ const movieReducer = (state = [], action) => {
         case "GET_MOVIE" :
             state= [...action.payload.data];
             return state;
+        case "GET_MOVIEID" :
+            state= [...action.payload.data];
+            return state;
        case "POST_MOVIE" :
            state = [...state, action.payload.data]
             return state;
         case "EDIT_TASK" :
             state = [...state, action.payload.data]
             return state;
-        case "DELETE_TASK" :
+        case "DELETE_MOVIE" :
             const index = state.findIndex(res=> res._id === action.payload.data._id)
 
             if(index !== -1 ){

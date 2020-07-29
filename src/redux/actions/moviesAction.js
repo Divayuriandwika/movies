@@ -56,33 +56,24 @@ export const getAll = () => {
 }
 
 
-// export const getTaskID = (id) => {
-// 	return (dispatch) => {
-// 		return axios
-// 			.get(`${apiUrl}/task/manager/${id}`)
-// 			.then((response) => {
-// 				dispatch(getTaskIDSuccess(response.data));
-// 			})
-// 			.catch((error) => {
-// 				console.log(error);
-// 				throw error;
-// 			});
-// 	};
-// };
-// export const getTaskIDSuccess = (data) => {
-// 	return {
-// 		type: 'GET_TASK',
-// 		payload: {
-// 			data
-// 		}
-// 	};
-// };
+export const getMovieID = (id) => {
+		return axios
+			.get(`${apiUrl}/movies/${id}`);
+};
+export const getMovieIDSuccess = (data) => {
+	return {
+		type: 'GET_MOVIEID',
+		payload: {
+			data
+		}
+	};
+};
 
 
-export const deleteTask = (id) => {
+export const deleteMovie = (id) => {
 	return (dispatch) => {
 		return axios
-		.delete(`${apiUrl}/task/${id}`)
+		.delete(`${apiUrl}/movies/${id}`)
 		.then((response) => {
 			dispatch(deleteIDSuccess(response.data.data));
 		})
@@ -96,7 +87,7 @@ export const deleteTask = (id) => {
 
 export const deleteIDSuccess = (data) => {
 	return {
-		type: 'DELETE_TASK',
+		type: 'DELETE_MOVIE',
 		payload: {
 			data
 		}
@@ -105,7 +96,7 @@ export const deleteIDSuccess = (data) => {
 
 
 
-export const editTask = (id) => {
+export const editMovie = (id) => {
 	console.log(id)
 	return (dispatch) => {
 		console.log(id)

@@ -6,13 +6,13 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Card from '../component/Card'
 import Header from '../component/Header'
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import Editmovie from './Editmovie'
+import Search from '../component/Searchbar'
+
 
 
 
@@ -68,12 +68,18 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      
       <main className={classes.content}>
         <Container maxWidth="0">
         <Header/>
 
-        <Grid container spacing={1}>
+            <Grid item xs={12} md={12} lg={12} >
+            <div className={classes.paper} style={{alignItems: 'center'}}>
+            <Search/>
+            </div>
+            </Grid>
 
+        <Grid container spacing={1}>
                         {allMovies.map((item) => {
                                 console.log(allMovies);
                                 
@@ -82,10 +88,10 @@ export default function Dashboard() {
                                         item
                                         xs={12}
                                         md={6}
-                                        lg={3}
+                                        lg={4}
                                         key={item.id}
                                     >
-                                        <div className={classes.paper} onClick={() => {history.push(`/edit/${item._id}`)}}>
+                                        <div className={classes.paper} onClick={() => {history.push(`/review/${item._id}`)}}>
                                             <Card
                                                 poster={item.poster}
                                                 title={item.title}

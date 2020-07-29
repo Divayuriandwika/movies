@@ -10,15 +10,11 @@ import {getAll} from '../redux/actions/moviesAction'
 
 
 const useStyles = makeStyles((theme) => ({
-  '@global': {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: 'none',
-    },
+  root: {
+    display: 'flex'
   },
   appBar: {
-    backgroundColor: 'black',
+    backgroundColor: 'lightblue',
   },
   toolbar: {
     flexWrap: 'wrap',
@@ -54,18 +50,29 @@ console.log('test')
   
 
   return (
+    <div className={classes.root}>
     <React.Fragment>
-      <CssBaseline />
-      <AppBar className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6"  noWrap className={classes.toolbarTitle}>
-            NETPLIKS
-          </Typography>
-
-          
-    
-        </Toolbar>
-      </AppBar>
+        <CssBaseline />
+        <AppBar
+            position="static"
+            color="default"
+            elevation={0}
+            className={classes.appBar}
+            
+        >
+            <Toolbar className={classes.toolbar}>
+                <Typography
+                    variant="h6"
+                    color="inherit"
+                    noWrap
+                    className={classes.toolbarTitle}
+                >
+                    NETPLIKS
+                </Typography>
+                
+            </Toolbar>
+        </AppBar>
     </React.Fragment>
+</div>
   );
 }
