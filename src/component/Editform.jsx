@@ -1,145 +1,117 @@
 import React, {useEffect} from 'react';
-import { Formik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import {addMovie} from '../redux/actions/moviesAction'
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {getMovieID} from '../redux/actions/moviesAction'
+import {editMovie} from '../redux/actions/moviesAction'
+import { connect } from "react-redux";
 
 
-export default function Add(edit) {
-	console.log(edit);
+function Add(props) {
+	console.log(props);
 
-	// const movieId= edit.match.params.movieId;
-    const [movie, setMovie] = React.useState({});
+	const [title, setTitle] = React.useState(props.movie.title);
+    const [poster, setPoster] = React.useState(props.movie.poster);
+    const [year, setYear] = React.useState(props.movie.year);
+    const [genre, setGenre] = React.useState(props.movie.genre);
+    const [rating, setRating] = React.useState(props.movie.rating);
+    const [resume, setResume] = React.useState(props.movie.resume);
+
     
 	const dispatch = useDispatch()
 	const history = useHistory();
 
-	// useEffect(() => {
-	// 	getMovieID(movieId).then(res => {
-	// 		console.log(res)
-	// 	 setMovie(state => {
-	// 		 return {
-	// 			 ...state, ...res.data.data
-	// 		 }
-	// 	 })       
-	// 	})
-	 
-	//  }, []);
+	const handleEdit = async() => {
+
+        const movies={
+            id: props.movie._id,
+            title,
+            poster,
+            year,
+            genre,
+			rating,
+			resume
+        }
+
+ 
+    await  dispatch(editMovie(movies))
+	await  alert ('Edit movie success')
+	await  history.push('/')
+      };
+
+	
 
     return(
-                        <Formik
-									initialValues={{
-										// id : movieId,
-										title : movie.title, 
-                                        poster: movie.poster, 
-                                        resume: movie.resume, 
-                                        rating: movie.rating, 
-                                        genre : movie.genre, 
-                                        year  : movie.year,
-									}}
-									
-									onSubmit={async(values) => {
-										// await dispatch(addMovie(values));
-										// await alert('Movie successfully added');
-										// await window.location.reload();
-                                        // await history.push('/');
-                                        
-									}}
-								>
-									{({ handleChange, handleSubmit, values, isSubmitting, errors, touched }) => {
-										return (
-											<form  noValidate onSubmit={handleSubmit}>
-												<TextField
-													variant="outlined"
-													required
-													fullWidth
-													id="title"
-													label="Film's title"
-													name="title"
-													autoComplete="title"
-													onChange={handleChange}
-													values={values.title}
-                                                    size="small"
-                                                    style={{ marginTop: 20, marginBottom: 20, background: 'white'}}
-												/>
-												<TextField
-													variant="outlined"
-													style={{ marginBottom: 20, background: 'white'}}
-													required
-													fullWidth
-													id="poster"
-													label="Poster's url"
-													name="poster"
-													autoComplete="poster"
-													onChange={handleChange}
-													values={values.poster}
-													size="small"
-												/>
-												 <TextField
-													variant="outlined"
-													style={{ marginBottom: 20, background: 'white'}}
-													required
-													fullWidth
-													name="year"
-													label="Year"
-													type="year"
-													id="year"
-													autoComplete="year"
-													onChange={handleChange}
-													values={values.year}
-													size="small"
-												/>
-												<TextField
-													variant="outlined"
-													style={{ marginBottom: 20, background: 'white'}}
-													required
-													fullWidth
-													name="genre"
-													label="Genre"
-													type="genre"
-													id="genre"
-													autoComplete="genre"
-													onChange={handleChange}
-													values={values.genre}
-													size="small"
-												/>
-                                                <TextField
-													variant="outlined"
-													style={{ marginBottom: 20, background: 'white'}}
-													required
-													fullWidth
-													name="rating"
-													label="Rating"
-													type="rating"
-													id="rating"
-													autoComplete="rating"
-													onChange={handleChange}
-													values={values.rating}
-													size="small"
-												/>
-                                               <TextField
-													variant="outlined"
-													style={{ marginBottom: 20, background: 'white'}}
-													required
-													fullWidth
-													name="resume"
-													label="Resume"
-													type="resume"
-													id="resume"
-													autoComplete="resume"
-													onChange={handleChange}
-													values={values.resume}
-													size="small"
-												/>
+                        
+					<div>
+						<TextField
+                        autoFocus
+                        margin="dense"
+                        id="Title"
+                        label="Movie's title"
+                        type="text"
+                        fullWidth
+                        value={title}
+						onChange={(e) => setTitle(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="Poster"
+                        label="Poster's url"
+                        type="text"
+                        fullWidth
+                        value={poster}
+						onChange={(e) => setPoster(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="Year"
+                        label="Year"
+                        type="number"
+                        fullWidth
+                        value={year}
+						onChange={(e) => setYear(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="Genre"
+                        label="Genre"
+                        type="text"
+                        fullWidth
+                        value={genre}
+						onChange={(e) => setGenre(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
+                    <TextField
+                        margin="dense"
+                        id="Rating"
+                        label="Rating"
+                        type="number"
+                        fullWidth
+                        value={rating}
+						onChange={(e) => setRating(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
+					<TextField
+                        margin="dense"
+                        id="Resume"
+                        label="Resume"
+                        type="text"
+                        fullWidth
+                        value={resume}
+						onChange={(e) => setResume(e.target.value)}
+						style={{ backgroundColor: 'white'}}
+                    />
 												<Button
-													type="submit"
+													onClick={handleEdit}
 													fullWidth
 													variant="contained"
 													color="inherit"
-													disabled={isSubmitting}
+													
 													style={{
 														borderRadius: '3px',
 														fontFamily: 'Roboto, sans-serif',
@@ -151,9 +123,8 @@ export default function Add(edit) {
 												>
 													<b>Edit</b>
 												</Button>
-											</form>
-										);
-									}}
-								</Formik>
+												</div>
     )
 }
+
+export default connect(null)(Add);

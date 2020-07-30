@@ -88,7 +88,7 @@ export default function Dashboard() {
                                         item
                                         xs={12}
                                         md={6}
-                                        lg={4}
+                                        lg={3}
                                         key={item.id}
                                     >
                                         <div className={classes.paper} onClick={() => {history.push(`/review/${item._id}`)}}>

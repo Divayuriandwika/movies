@@ -11,7 +11,7 @@ function SearchInput() {
     const dispatch = useDispatch();
 
     return (
-        <Fragment>
+        
             <Formik
                 initialValues={{ destination: "" }}
                 onSubmit={(values) => {
@@ -38,10 +38,9 @@ function SearchInput() {
                         <TextField
                             id="destination"
                             name="destination"
-                            style={{ margin: 8, background: 'white' }}
+                            style={{background: 'white' }}
                             placeholder="Movie's Title"
                             fullWidth
-                            margin="normal"
                             onBlur={handleBlur}
                             InputLabelProps={{
                                 shrink: true,
@@ -70,7 +69,6 @@ function SearchInput() {
                     </form>
                 )}
             </Formik>
-        </Fragment>
     );
 }
 

@@ -136,7 +136,7 @@ const deleteThisItem = async(id) => {
                     </div>
                     <Collapse in={open}>
                     <div id="example-collapse-text" style={{color: 'white'}}>
-                    <Editform edit = {props}
+                    <Editform movie = {movie}
                     />
                     </div>
                 </Collapse>
