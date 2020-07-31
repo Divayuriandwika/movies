@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch } from "react-redux";
-// import { fetchTrip } from "../redux/actions/mainAction";
+import { searchMovie } from "../redux/actions/moviesAction";
 import { Formik } from "formik";
 import Grid from '@material-ui/core/Grid';
 
@@ -13,13 +13,10 @@ function SearchInput() {
     return (
         
             <Formik
-                initialValues={{ destination: "" }}
+                initialValues={{ title: "" }}
                 onSubmit={(values) => {
-                    // dispatch(fetchTrip(values));
-                    // setTimeout(() => {
-                    //     alert(JSON.stringify(values, null, 2));
-                    //     setSubmitting(false);
-                    // }, 400);
+                    dispatch(searchMovie(values));
+                    
                 }}
             >
                 {({
@@ -30,14 +27,14 @@ function SearchInput() {
                     handleBlur,
                     handleSubmit,
                     isSubmitting,
-                    /* and other goodies */
+                  
                 }) => (
                     <form onSubmit={handleSubmit}>
-                    <Grid container spacing={3} style={{alignItems: 'center', background: 'lightblue'}}>
-                        <Grid item xs={12} md={12} lg={8}>
+                    <Grid container spacing={3} style={{backgroundColor: 'ligthblue'}}>
+                        <Grid item xs={8} md={8} lg={8}>
                         <TextField
-                            id="destination"
-                            name="destination"
+                            id="title"
+                            name="title"
                             style={{background: 'white' }}
                             placeholder="Movie's Title"
                             fullWidth
@@ -47,22 +44,18 @@ function SearchInput() {
                             }}
                             variant="outlined"
                             onChange={handleChange}
-                            value={values.destination}
+                            value={values.title}
+                            size='small'
                         />
                         </Grid>
-                        {/* <p style={{ color: "red", fontStyle: "italic" }}>
-                            {errors.destination &&
-                                touched.destination &&
-                                errors.destination}
-                        </p> */}
-                        <Grid item xs={12} md={12} lg={4}>
+                       
+                        <Grid item xs={4} md={4} lg={4}>
                         <Button
                             variant="contained"
-                            color="secondary"
                             type="submit"
-                            style={{ marginTop: 17 }}
+                            style={{ marginTop: 3, backgroundColor: 'red' }}
                         >
-                           <SearchIcon />
+                           <SearchIcon style={{color: 'white'}} />
                         </Button>
                         </Grid>
                         </Grid>

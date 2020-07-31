@@ -27,7 +27,7 @@ export default function Add() {
 										await dispatch(addMovie(values));
 										await alert('Movie successfully added');
 										// await window.location.reload();
-                                        await history.push('/');
+                                        await history.push('/admin');
                                         
 									}}
 								>

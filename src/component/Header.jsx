@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux'
 import {getAll} from '../redux/actions/moviesAction'
+import '../App.css'
 
 
 
@@ -14,14 +15,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   appBar: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'black',
   },
   toolbar: {
     flexWrap: 'wrap',
   },
   toolbarTitle: {
     flexGrow: 1,
-    color: 'white',
+    color: 'red',
+    fontFamily: 'Fjalla One, sans-serif',
+    fontSize: 30
     
   },
   link: {

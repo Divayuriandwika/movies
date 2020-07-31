@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
   media: {
     height: 200,
-    background: 'red'
+    background: 'white'
   },
 });
 
@@ -26,9 +26,10 @@ export default function MediaCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={`${props.poster}`}
           title="Movie"
-        />
+          >
+            <img src={`${props.poster}`} alt='Movie' style={{height: 200, maxWidth: 400}}/>
+        </CardMedia>
         
           <Typography  style = {{textAlign: 'center', background: 'black', color: 'white'}}>
             {props.title}

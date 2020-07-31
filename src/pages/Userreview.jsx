@@ -57,6 +57,18 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  maintitle: {
+    fontSize: 40,
+    marginTop: 10,
+    marginBottom: 40,
+    fontFamily: 'Playfair Display serif'
+  },
+  title: {
+    fontSize: 22,
+  },
+  detail: {
+    fontSize: 17,
+  }
 }));
 
 export default function Dashboard(props) {
@@ -93,34 +105,49 @@ console.log('test')
         <Container maxWidth="0" >
         <Header/>
 
+          <Hidden mdDown>
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Card className="bg-dark text-white">
-                <Card.Img src={movie.poster} alt="Card image" />
-                <Hidden mdDown>
+                <Card.Img src={movie.poster} alt="image" style={{opacity: 0.3}}/>
                 <Card.ImgOverlay>
-                    <Card.Title>{movie.title}</Card.Title>
-                    <Card.Text>{movie.title}</Card.Text>
-                    <Card.Text>
+                <Grid lg={4}>
+                  <div>
+                    <Card.Title className={classes.maintitle}>{movie.title}</Card.Title>
+                    <Card.Text className={classes.title}>{movie.title}</Card.Text>
+                    <Card.Text className={classes.detail}>
                     {movie.year} | {movie.genre} | <GradeIcon style={{ color: '#f5c842' }}/>{movie.rating}
                     </Card.Text>
-                    <Card.Text>{movie.resume}</Card.Text>
+                    <Card.Text className={classes.detail}>{movie.resume}</Card.Text>
+                </div>
+                </Grid> 
                 </Card.ImgOverlay>
-                </Hidden>
-                </Card>    
-            </Grid>
-          </Grid>
+                </Card>
+                </Grid>   
+               </Grid>
+             </Hidden>
+
 
           <Hidden lgUp>
-            <Grid item xs={12} md={12} lg={12} style = {{color: 'white'}}>
-                    <Card.Title>{movie.title}</Card.Title>
-                    <Card.Text>{movie.title}</Card.Text>
-                    <Card.Text>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={12} lg={12}>
+              <Card className="bg-dark text-white">
+                <Card.Img src={movie.poster} alt="image"/>
+                </Card>
+                </Grid>
+
+                <Grid item xs={12} md={12} lg={12} style = {{color: 'white'}}>
+                  <div>
+                    <Card.Title className={classes.maintitle}>{movie.title}</Card.Title>
+                    <Card.Text className={classes.title}>{movie.title}</Card.Text>
+                    <Card.Text className={classes.detail}>
                     {movie.year} | {movie.genre} | <GradeIcon style={{ color: '#f5c842' }}/>{movie.rating}
                     </Card.Text>
-                    <Card.Text>{movie.resume}</Card.Text>
-            </Grid>
-            </Hidden>
+                    <Card.Text className={classes.detail}>{movie.resume}</Card.Text>
+                </div>
+                </Grid>    
+                </Grid>
+                </Hidden>
 
           <Box pt={4}>
             <Copyright />

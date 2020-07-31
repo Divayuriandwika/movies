@@ -5,6 +5,8 @@ import AddMovie from './pages/Addmovie'
 import EditMovie from './pages/Editmovie'
 import User from './pages/User'
 import Review from './pages/Userreview'
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
 
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
     <div className="App">
      <Router>
        <Switch>
-          <Route exact path='/' component={Admin}/>
+       <Route exact path='/' component={SignIn}/>
+          <Route path='/signup' component={SignUp}/>
+          <Route path='/admin' component={Admin}/>
           <Route path='/add' component={AddMovie}/>
           <Route path='/edit/:movieId' component={EditMovie}/>
           <Route path='/user' component={User}/>

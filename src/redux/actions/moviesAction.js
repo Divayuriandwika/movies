@@ -123,3 +123,82 @@ export const editTaskSuccess = (data) => {
 		}
 	};
 };
+
+
+export const searchMovie =  (data) => { 
+    return (dispatch) => {   
+        return axios
+            .get(`${apiUrl}/movies/title/${data.title}`, {})
+            .then((response) => {
+				console.log(response);
+				
+			 dispatch(searchMovieTitle(response.data.data)); 
+            })
+            .catch((error) => {
+                throw error;
+            });
+    };
+};
+
+export const searchMovieTitle = (data) => {
+    return {
+        type: "GET_MOVIETITLE",
+        payload: {
+            data,
+        },
+    };
+};
+
+
+export const sortRatingHigh = () => {
+	return (dispatch) => {
+		return axios
+		.get(`${apiUrl}/movies`)
+		.then((response) => {
+				dispatch(sortRatingHighSuccess(response.data.data))
+		})
+		.catch((error) => {
+			console.log(error);
+			throw error;
+			
+		})
+	}
+};
+
+export const sortRatingHighSuccess = (data) => {
+    return {
+        type: "GET_BYRATINGUP",
+        payload: {
+            data,
+        },
+    };
+};
+
+
+export const sortRatingLow = () => {
+	return (dispatch) => {
+		return axios
+		.get(`${apiUrl}/movies`)
+		.then((response) => {
+				dispatch(sortRatingLowSuccess(response.data.data))
+		})
+		.catch((error) => {
+			console.log(error);
+			throw error;
+			
+		})
+	}
+};
+
+export const sortRatingLowSuccess = (data) => {
+    return {
+        type: "GET_BYRATINGDOWN",
+        payload: {
+            data,
+        },
+    };
+};
+
+
+
+

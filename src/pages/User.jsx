@@ -12,7 +12,18 @@ import Header from '../component/Header'
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Search from '../component/Searchbar'
-
+import { Paper } from "@material-ui/core";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import {useDispatch} from 'react-redux'
+import {sortRatingHigh} from '../redux/actions/moviesAction'
+import {sortRatingLow} from '../redux/actions/moviesAction'
 
 
 
@@ -55,15 +66,39 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  formControl: {
+    margin: theme.spacing(1),
+    maxWidth: 120,
+    background: 'white',
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const history = useHistory();
+  const [age, setAge] = React.useState('');
+  const dispatch = useDispatch()
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   const allMovies = useSelector((state) => state.allMovies)
   console.log(allMovies)
+
+  const sortRatingUp = async() => {
+    await dispatch(sortRatingHigh())
+    await alert ('Get High Rating Movie success')
+  };
+
+  const sortRatingDown = async() => {
+    await dispatch(sortRatingLow())
+    await alert ('Get Low Rating Movie success')
+  };
 
   return (
     <div className={classes.root}>
@@ -73,13 +108,58 @@ export default function Dashboard() {
         <Container maxWidth="0">
         <Header/>
 
-            <Grid item xs={12} md={12} lg={12} >
-            <div className={classes.paper} style={{alignItems: 'center'}}>
+        <Grid container spacing={3}>
+        <Grid item xs={6} md={6} lg={10}>
+                        <Paper >
+                            {/* side */}
+                        </Paper>
+                    </Grid>
+
+        <Grid item xs={6} md={6} lg={2} >
+            <div className={classes.paper}>
+            <FormControl variant="filled"  size='small' className={classes.formControl}>
+        <InputLabel id="demo-simple-select-filled-label">Sort By</InputLabel>
+        <Select
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem onClick={sortRatingUp}>High-Low Rating</MenuItem>
+          <MenuItem onClick={sortRatingDown}>Low-High Rating</MenuItem>
+        </Select>
+      </FormControl>
+            </div>
+            </Grid>
+            </Grid>
+
+        <Grid container spacing={3}>
+        <Grid item xs={12} md={12} lg={3}>
+                        <Paper >
+                            {/* side */}
+                        </Paper>
+                    </Grid>
+
+        <Grid item xs={12} md={12} lg={9} >
+            <div className={classes.paper} style={{marginBottom: 50}}>
             <Search/>
             </div>
             </Grid>
+            </Grid>
 
-        <Grid container spacing={1}>
+            <Grid container spacing={3}>
+                    <Grid item xs={12} md={12} lg={1}>
+                        <Paper >
+                            {/* side */}
+                        </Paper>
+                    </Grid>
+
+                    <Grid item xs={12} md={12} lg={10}>
+                    <div>
+                     <Grid container spacing={1}>
                         {allMovies.map((item) => {
                                 console.log(allMovies);
                                 
@@ -90,6 +170,7 @@ export default function Dashboard() {
                                         md={6}
                                         lg={3}
                                         key={item.id}
+                      
                                     >
                                         <div className={classes.paper} onClick={() => {history.push(`/review/${item._id}`)}}>
                                             <Card
@@ -102,6 +183,16 @@ export default function Dashboard() {
                                 );
                             })}
                     </Grid> 
+                    </div>
+                    </Grid>
+
+                    <Grid item xs={12} md={12} lg={1}>
+                        <Paper >
+                            {/* side */}
+                        </Paper>
+                    </Grid>
+                    </Grid>
+
 
           <Box pt={4}>
             <Copyright />
