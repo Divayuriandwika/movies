@@ -14,12 +14,16 @@ import Avatar from "@material-ui/core/Avatar";
 import { Link, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {addUser} from '../redux/actions/usersAction'
+import Logo from '../asset/movie5.jpeg'
+import Card from 'react-bootstrap/Card'
+import Logo1 from '../asset/girl3.JPG'
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        backgroundColor: 'black'
         
     },
     toolbar: {
@@ -112,6 +116,17 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(20),
         margin: 20,
     },
+    toolbarTitle: {
+        color: 'red',
+        fontFamily: 'Fjalla One, sans-serif',
+        fontSize: 30
+        
+      },
+    large: {
+        width: theme.spacing(20),
+        height: theme.spacing(20),
+        margin: 20,
+    },
 }));
 
 export default function Dashboard() {
@@ -125,11 +140,27 @@ export default function Dashboard() {
         <div className={classes.root}>
             <CssBaseline />
             <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
+                <div/>
                 <Container maxWidth="0" className={classes.container}>
+
+            <Card className="bg-dark text-white">
+             <Hidden mdDown>
+                <Card.Img src={Logo} alt="" style={{opacity: 0.3}}/>
+                </Hidden>
+                    <Card.ImgOverlay>
                     <Grid container spacing={0} justify='center'>
-                        <Grid item xs={12} md={4} lg={3} >
+                        <Grid item xs={12} md={12} lg={3} >
                             <Paper className={fixedHeightPaper} >
+                            <Typography
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+                            className={classes.toolbarTitle}
+                            >
+                                NETPLIKS
+                            </Typography>
+
+                            <Avatar alt="" src={Logo1} className={classes.large} />
 
                             <Typography
 									component="h1"
@@ -242,6 +273,8 @@ export default function Dashboard() {
                             </Paper>
                         </Grid>
                     </Grid>
+                    </Card.ImgOverlay>
+                    </Card>
                 </Container>
             </main>
         </div>

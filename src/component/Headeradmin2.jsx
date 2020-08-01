@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux'
 import {getAll} from '../redux/actions/moviesAction'
 import '../App.css'
+import Header3 from './Headeradmin3'
 
 
 
@@ -35,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 30,
     margin: 5
   },
+  button: {
+      backgroundColor: 'red',
+      color: 'white'
+  }
 }));
 
 
@@ -72,6 +77,8 @@ console.log('test')
                 >
                     NETPLIKS
                 </Typography>
+
+                <Header3/>
                 
             </Toolbar>
         </AppBar>

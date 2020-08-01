@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import {getMovieID} from '../redux/actions/moviesAction'
 import {editMovie} from '../redux/actions/moviesAction'
 import { connect } from "react-redux";
 
@@ -54,7 +53,8 @@ function Add(props) {
                         fullWidth
                         value={title}
 						onChange={(e) => setTitle(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                        
+                        variant="outlined"
                     />
                     <TextField
                         margin="dense"
@@ -64,7 +64,8 @@ function Add(props) {
                         fullWidth
                         value={poster}
 						onChange={(e) => setPoster(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                        
+                        variant="outlined"
                     />
                     <TextField
                         margin="dense"
@@ -74,7 +75,8 @@ function Add(props) {
                         fullWidth
                         value={year}
 						onChange={(e) => setYear(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                       
+                        variant="outlined"
                     />
                     <TextField
                         margin="dense"
@@ -84,7 +86,8 @@ function Add(props) {
                         fullWidth
                         value={genre}
 						onChange={(e) => setGenre(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                      
+                        variant="outlined"
                     />
                     <TextField
                         margin="dense"
@@ -94,7 +97,8 @@ function Add(props) {
                         fullWidth
                         value={rating}
 						onChange={(e) => setRating(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                        
+                        variant="outlined"
                     />
 					<TextField
                         margin="dense"
@@ -104,7 +108,8 @@ function Add(props) {
                         fullWidth
                         value={resume}
 						onChange={(e) => setResume(e.target.value)}
-						style={{ backgroundColor: 'white'}}
+                        variant="outlined"
+                        size="small"
                     />
 												<Button
 													onClick={handleEdit}
@@ -115,13 +120,13 @@ function Add(props) {
 													style={{
 														borderRadius: '3px',
 														fontFamily: 'Roboto, sans-serif',
-														backgroundColor: '#329da8',
+														backgroundColor: 'red',
 														marginTop: '10px',
-														color: '#6C5434',
+														color: 'white',
 														marginBottom: 20
 													}}
 												>
-													<b>Edit</b>
+													<b>SAVE</b>
 												</Button>
 												</div>
     )

@@ -3,42 +3,23 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import Card from '../component/Card'
-import Header from '../component/Header'
+import Header from '../component/Headeruser1'
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Search from '../component/Searchbar'
 import { Paper } from "@material-ui/core";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import {useDispatch} from 'react-redux'
 import {sortRatingHigh} from '../redux/actions/moviesAction'
 import {sortRatingLow} from '../redux/actions/moviesAction'
+import Footer from '../component/Footer'
 
-
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -69,11 +50,16 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     maxWidth: 120,
-    background: 'white',
+    background: 'black',
+    border: '2px ridge white',
+    borderRadius: '5px',
+    '&:hover' : {
+      background: 'red',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+}
 }));
 
 export default function Dashboard() {
@@ -117,8 +103,8 @@ export default function Dashboard() {
 
         <Grid item xs={6} md={6} lg={2} >
             <div className={classes.paper}>
-            <FormControl variant="filled"  size='small' className={classes.formControl}>
-        <InputLabel id="demo-simple-select-filled-label">Sort By</InputLabel>
+            <FormControl variant="outlined"  size='small' className={classes.formControl}>
+        <InputLabel id="demo-simple-select-filled-label" style={{color: 'white'}}>Sort By</InputLabel>
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
@@ -195,7 +181,7 @@ export default function Dashboard() {
 
 
           <Box pt={4}>
-            <Copyright />
+            <Footer/>
           </Box>
         </Container>
       </main>

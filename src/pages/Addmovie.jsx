@@ -1,33 +1,24 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import Add from '../component/Addform'
-import Header from '../component/Header'
+import Logo from '../asset/movie4.jpg'
+import Card from 'react-bootstrap/Card'
+import Hidden from '@material-ui/core/Hidden';
+import Header from '../component/Headeradmin2'
+import Footer from '../component/Footer'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    backgroundColor: 'black'
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -58,21 +49,37 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header/>
       <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="0" >
+          <Header/>
 
-          <Grid container spacing={3} style = {{justifyContent: 'center'}}>
-            <Grid item xs={12} md={12} lg={6}>
-              <Paper className={classes.paper}>
-                <Add/>
-              </Paper>
-            </Grid>
-          </Grid>
+        <Card className="bg-dark text-white">
+             <Hidden mdDown>
+                <Card.Img src={Logo} alt="" style={{opacity: 0.3}}/>
+                    <Card.ImgOverlay>
+                      <Grid container spacing={3} style = {{justifyContent: 'center'}}>
+                        <Grid item xs={12} md={12} lg={6}>
+                          <Paper className={classes.paper} style={{marginTop: 50}}>
+                            <Add/>
+                          </Paper>
+                        </Grid>
+                      </Grid>
+                      </Card.ImgOverlay>
+                    </Hidden>
+                    </Card>
+
+                    <Hidden lgUp>
+                    <Grid container spacing={3} style = {{justifyContent: 'center'}}>
+                        <Grid item xs={12} md={12} lg={6}>
+                          <Paper className={classes.paper} style={{marginTop: 50}}>
+                            <Add/>
+                          </Paper>
+                        </Grid>
+                      </Grid>
+                      </Hidden>
 
           <Box pt={4}>
-            <Copyright />
+            <Footer/>
           </Box>
         </Container>
       </main>

@@ -7,7 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux'
 import {getAll} from '../redux/actions/moviesAction'
 import '../App.css'
-
+import Button from "@material-ui/core/Button";
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 30,
     margin: 5
   },
+  button: {
+      backgroundColor: 'red',
+      color: 'white'
+  }
 }));
 
 
@@ -42,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Pricing() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   
   useEffect(() => {
    
@@ -72,6 +78,10 @@ console.log('test')
                 >
                     NETPLIKS
                 </Typography>
+
+                <Button className={classes.button} onClick={() => {history.push('/')}}>
+                Logout
+                </Button>
                 
             </Toolbar>
         </AppBar>

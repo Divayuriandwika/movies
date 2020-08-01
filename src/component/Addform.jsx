@@ -26,7 +26,6 @@ export default function Add() {
 									onSubmit={async(values) => {
 										await dispatch(addMovie(values));
 										await alert('Movie successfully added');
-										// await window.location.reload();
                                         await history.push('/admin');
                                         
 									}}
@@ -125,12 +124,12 @@ export default function Add() {
 													style={{
 														borderRadius: '3px',
 														fontFamily: 'Roboto, sans-serif',
-														backgroundColor: '#329da8',
+														backgroundColor: 'red',
 														marginTop: '10px',
-														color: '#6C5434'
+														color: 'white'
 													}}
 												>
-													<b>Add</b>
+													<b>Add New Movie</b>
 												</Button>
 											</form>
 										);
