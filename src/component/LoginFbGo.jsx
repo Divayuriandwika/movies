@@ -26,7 +26,7 @@ export default function App () {
 
 
       <GoogleLogin
-        clientId="" //CLIENTID NOT CREATED YET
+        clientId="984942247473-htijcg924kmrc1o98s9foj6hpp7pl8u8.apps.googleusercontent.com"
         buttonText="LOGIN WITH GOOGLE"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
