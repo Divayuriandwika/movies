@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = 'https://moviestest-api.herokuapp.com'
 
 // POST new user to API
 export const addUser = (values) => {
