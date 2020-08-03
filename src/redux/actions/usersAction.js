@@ -41,7 +41,7 @@ export const loginUser = (values, history) => {
                 
 			})
 			.catch((error) => {
-				// alert(error.response.data);
+				alert(error.response.data);
 				throw error;
 			});
 	};
@@ -62,6 +62,7 @@ export const newLogin = (data, history) => {
 		
 	}
 }
+
 
 export const loginSuccess = (data) => {
 	return {

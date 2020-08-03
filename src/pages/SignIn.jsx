@@ -185,10 +185,6 @@ export default function Dashboard() {
 											errors.email = 'Invalid email address';
 										}
 
-										if (!values.password) {
-											errors.password = 'Required';
-										}
-
 										return errors;
 									}}
 									onSubmit={async(values) => {
@@ -199,8 +195,9 @@ export default function Dashboard() {
 								>
 									{({ handleChange, handleSubmit, values, isSubmitting, errors, touched }) => {
 										return (
-											<form className={classes.form} noValidate onSubmit={handleSubmit}>
+											<form onSubmit={handleSubmit}>
 												<TextField
+                                                    type="email"
 													variant="outlined"
 													margin="dense"
 													required
@@ -214,6 +211,7 @@ export default function Dashboard() {
                                                     size="small"
                                                     style={{ marginTop: 20, marginBottom: 15, backgroundColor: 'white'}}
 												/>
+                                                 {errors.email && touched.email && errors.email}
 												<TextField
                                                     variant="outlined"
                                                     style={{ marginBottom: 20, backgroundColor: 'white'}}
@@ -229,6 +227,7 @@ export default function Dashboard() {
 													values={values.password}
 													size="small"
 												/>
+                                                {errors.password && touched.password && errors.password}
 
                                                 <Login/>
                                                 

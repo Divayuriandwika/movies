@@ -170,7 +170,6 @@ export default function Dashboard() {
 									Sign Up
 								</Typography>
 
-                                {/* <Avatar alt="Remy Sharp" src={} className={classes.large} /> */}
 
 								<Formik
 									initialValues={{
@@ -186,10 +185,6 @@ export default function Dashboard() {
 											errors.email = 'Invalid email address';
 										}
 
-										if (!values.password) {
-											errors.password = 'Required';
-										}
-
 										return errors;
 									}}
 									onSubmit={async(values) => {
@@ -201,7 +196,7 @@ export default function Dashboard() {
 								>
 									{({ handleChange, handleSubmit, values, isSubmitting, errors, touched }) => {
 										return (
-											<form className={classes.form} noValidate onSubmit={handleSubmit}>
+											<form onSubmit={handleSubmit}>
 												<TextField
 													variant="outlined"
 													required
@@ -216,6 +211,7 @@ export default function Dashboard() {
                                                     style={{ marginTop: 20, marginBottom: 20, backgroundColor: 'white'}}
 												/>
 												<TextField
+                                                    type="email"
 													variant="outlined"
 													style={{ marginBottom: 20, backgroundColor: 'white'}}
 													required
@@ -228,6 +224,7 @@ export default function Dashboard() {
 													values={values.email}
 													size="small"
 												/>
+                                                {errors.email && touched.email && errors.email}
 												<TextField
 													variant="outlined"
 													style={{ marginBottom: 20, backgroundColor: 'white'}}
@@ -242,6 +239,7 @@ export default function Dashboard() {
 													values={values.password}
 													size="small"
 												/>
+                                                {errors.password && touched.password && errors.password}
 												<Button
 													type="submit"
 													fullWidth

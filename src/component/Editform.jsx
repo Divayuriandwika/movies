@@ -36,7 +36,7 @@ function Add(props) {
  
     await  dispatch(editMovie(movies))
 	await  alert ('Edit movie success')
-	await  history.push('/')
+	await  history.push('/admin')
       };
 
 	
