@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Card from '../component/Card'
-import Header from '../component/Headeradmin1'
+import Header from '../component/Headeradmin2'
 import {useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Search from '../component/Searchbar'
