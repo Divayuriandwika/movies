@@ -18,7 +18,6 @@ import Logo from '../asset/movie5.jpeg'
 import Card from 'react-bootstrap/Card'
 import '../App.css'
 import Logo1 from '../asset/boy3.JPG'
-import Login from '../component/LoginFbGo'
 
 const drawerWidth = 240;
 
@@ -229,7 +228,6 @@ export default function Dashboard() {
 												/>
                                                 {errors.password && touched.password && errors.password}
 
-                                                <Login/>
                                                 
 												<Button
 													type="submit"

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://moviestest-api.herokuapp.com'
+const apiUrl = 'http://localhost:3000'
 
 // POST new user to API
 export const addUser = (values) => {
@@ -34,6 +34,26 @@ export const loginUser = (values, history) => {
 		return axios
 			.post(`${apiUrl}/users/login`, values)
 			.then((response) => {
+				localStorage.setItem('id', response.data.id);
+				localStorage.setItem('role', response.data.role);
+				localStorage.setItem('message', response.data.message);
+				dispatch(newLogin(response.data.role, history))
+                
+			})
+			.catch((error) => {
+				alert(error.response.data);
+				throw error;
+			});
+	};
+};
+
+export const loginGoogleUser = (values, history) => {
+	return (dispatch) => {
+		console.log(values)
+		return axios
+			.post(`${apiUrl}/users/login/google`, values)
+			.then((response) => {
+				console.log(response)
 				localStorage.setItem('id', response.data.id);
 				localStorage.setItem('role', response.data.role);
 				localStorage.setItem('message', response.data.message);
