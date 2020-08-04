@@ -103,7 +103,7 @@ console.log('test')
 const deleteThisItem = async(id) => {
     await dispatch(deleteMovie(id))
     await alert ('Delete movie success')
-    await history.push('/')
+    await history.push('/admin')
   };
   
 
