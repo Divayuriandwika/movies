@@ -9,7 +9,7 @@ import Card from 'react-bootstrap/Card'
 import Button from "@material-ui/core/Button";
 import Collapse from 'react-bootstrap/Collapse'
 import Editform from '../component/Editform'
-import Header from '../component/Headeradmin1'
+import Header from '../component/Headeradmin2'
 import { useEffect } from 'react';
 import {getMovieID} from '../redux/actions/moviesAction'
 import {useDispatch} from 'react-redux'
