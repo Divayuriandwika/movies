@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl ='https://moviestest-api.herokuapp.com'
+const apiUrl = 'http://localhost:3000'
 
 
 export const addMovie = (values) => {
@@ -105,6 +105,11 @@ export const editMovie = (id) => {
 		.then((response) => {
 			console.log(response)
 			dispatch(getAll());
+			for (let key in id) {
+				if (id[key] === "") {
+					delete id[key];
+				}
+			}
 		})
 		.catch((error) => {
 			console.log(error);

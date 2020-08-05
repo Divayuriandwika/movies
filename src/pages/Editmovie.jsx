@@ -132,7 +132,7 @@ const deleteThisItem = async(id) => {
                     <Collapse in={open}>
                       <Grid item xs={12} md={12} lg={4}>
                     <Paper id="example-collapse-text" className={classes.paper} style={{marginBottom: 20}}>
-                    <Editform movie = {movie}
+                    <Editform movie = {{...movie}}
                     />
                     </Paper>
                     </Grid>

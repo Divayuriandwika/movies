@@ -5,18 +5,28 @@ import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {editMovie} from '../redux/actions/moviesAction'
 import { connect } from "react-redux";
+import { useEffect } from 'react';
 
+function Edit({movie}) {
+  
+    console.log(movie)
+    
+    const [title, setTitle] = React.useState("");
+    const [poster, setPoster] = React.useState("");
+    const [year, setYear] = React.useState("");
+    const [genre, setGenre] = React.useState("");
+    const [rating, setRating] = React.useState("");
+    const [resume, setResume] = React.useState("");
 
-function Add(props) {
-	console.log(props);
-
-	const [title, setTitle] = React.useState(props.movie.title);
-    const [poster, setPoster] = React.useState(props.movie.poster);
-    const [year, setYear] = React.useState(props.movie.year);
-    const [genre, setGenre] = React.useState(props.movie.genre);
-    const [rating, setRating] = React.useState(props.movie.rating);
-    const [resume, setResume] = React.useState(props.movie.resume);
-
+   useEffect(()=>{
+        setTitle(movie.title)
+        setPoster(movie.poster)
+        setYear(movie.year)
+        setGenre(movie.genre)
+        setRating(movie.rating)
+        setResume(movie.resume)
+    },[movie._id])
+    console.log(title);
     
 	const dispatch = useDispatch()
 	const history = useHistory();
@@ -24,7 +34,7 @@ function Add(props) {
 	const handleEdit = async() => {
 
         const movies={
-            id: props.movie._id,
+            id: movie._id,
             title,
             poster,
             year,
@@ -51,7 +61,7 @@ function Add(props) {
                         label="Movie's title"
                         type="text"
                         fullWidth
-                        value={title}
+                        value={title||""}
 						onChange={(e) => setTitle(e.target.value)}
                         
                         variant="outlined"
@@ -62,7 +72,7 @@ function Add(props) {
                         label="Poster's url"
                         type="text"
                         fullWidth
-                        value={poster}
+                        value={poster||""}
 						onChange={(e) => setPoster(e.target.value)}
                         
                         variant="outlined"
@@ -73,7 +83,7 @@ function Add(props) {
                         label="Year"
                         type="number"
                         fullWidth
-                        value={year}
+                        value={year||""}
 						onChange={(e) => setYear(e.target.value)}
                        
                         variant="outlined"
@@ -84,7 +94,7 @@ function Add(props) {
                         label="Genre"
                         type="text"
                         fullWidth
-                        value={genre}
+                        value={genre||""}
 						onChange={(e) => setGenre(e.target.value)}
                       
                         variant="outlined"
@@ -95,7 +105,7 @@ function Add(props) {
                         label="Rating"
                         type="number"
                         fullWidth
-                        value={rating}
+                        value={rating||""}
 						onChange={(e) => setRating(e.target.value)}
                         
                         variant="outlined"
@@ -106,7 +116,7 @@ function Add(props) {
                         label="Resume"
                         type="text"
                         fullWidth
-                        value={resume}
+                        value={resume||""}
 						onChange={(e) => setResume(e.target.value)}
                         variant="outlined"
                         size="small"
@@ -132,4 +142,4 @@ function Add(props) {
     )
 }
 
-export default connect(null)(Add);
+export default connect(null)(Edit);
