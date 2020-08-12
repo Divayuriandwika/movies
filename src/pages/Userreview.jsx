@@ -12,8 +12,15 @@ import {getMovieID} from '../redux/actions/moviesAction'
 import GradeIcon from '@material-ui/icons/Grade';
 import Hidden from '@material-ui/core/Hidden';
 import Footer from '../component/Footer'
+import { Paper } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 
 
+const list = {
+  listStyle: 'none',
+  color: 'grey', 
+  fontSize: 18
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,13 +97,39 @@ console.log('test')
         <Container maxWidth="0" >
         <Header/>
 
+        <Grid container spacing={3} style={{justifyContent: 'center', marginBottom: 30}}>
+                <Grid item xs={12} md={12} lg={8} >
+                                <div
+                                className="video"
+                                style={{
+                                    position: "relative",
+                                    paddingBottom: "56.25%" /* 16:9 */,
+                                    paddingTop: 25,
+                                    height: 0
+                                }}
+                                >
+                                <iframe
+                                    style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100%",
+                                    height: "100%"
+                                    }}
+                                    src={`${movie.trailer}`}
+                                    frameBorder="0"
+                                />
+                                </div>
+                                </Grid>
+                                </Grid>
+
           <Hidden mdDown>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={12} lg={12}>
+          <Grid container spacing={3} style={{justifyContent: 'center'}}>
+            <Grid item xs={12} md={12} lg={6}>
               <Card className="bg-dark text-white">
-                <Card.Img src={movie.poster} alt="image" style={{opacity: 0.3}}/>
+                <Card.Img src={movie.poster} alt="image" style={{opacity: 0.3, height: 550}}/>
                 <Card.ImgOverlay>
-                <Grid lg={4}>
+                <Grid lg={6}>
                   <div>
                     <Card.Title className={classes.maintitle}>{movie.title}</Card.Title>
                     <Card.Text className={classes.title}>{movie.title}</Card.Text>
@@ -108,7 +141,18 @@ console.log('test')
                 </Grid> 
                 </Card.ImgOverlay>
                 </Card>
-                </Grid>   
+                </Grid> 
+
+                <Grid item xs={12} md={12} lg={2}>
+                  <Paper align="center" style={{backgroundColor: '#0e0f1a', height: 550}}>
+                    <h5 style={{color: 'grey',paddingTop: 150}}>Watch this film on :</h5>
+                    <li style={list}><Link color="inherit" href="https://www.netflix.com/id-en/">Netflix</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://preview.disneyplus.com/id">Disney+</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.plex.tv/">Plex</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.stremio.com/">Stremio</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.viu.com/ott/id/id/all/">Viu</Link>{' '}</li>
+                    </Paper>
+                </Grid>  
                </Grid>
              </Hidden>
 
@@ -130,7 +174,16 @@ console.log('test')
                     </Card.Text>
                     <Card.Text className={classes.detail}>{movie.resume}</Card.Text>
                 </div>
-                </Grid>    
+                </Grid>  
+
+                  <Grid item xs={12} md={12} lg={12} style = {{color: 'white'}}>
+                <h5 style={{color: 'grey'}}>Watch this film on :</h5>
+                    <li style={list}><Link color="inherit" href="https://www.netflix.com/id-en/">Netflix</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://preview.disneyplus.com/id">Disney+</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.plex.tv/">Plex</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.stremio.com/">Stremio</Link>{' '}</li>
+                    <li style={list}><Link color="inherit" href="https://www.viu.com/ott/id/id/all/">Viu</Link>{' '}</li> 
+                </Grid>
                 </Grid>
                 </Hidden>
 

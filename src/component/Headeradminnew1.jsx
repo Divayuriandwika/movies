@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux'
 import {getAll} from '../redux/actions/moviesAction'
 import '../App.css'
+import Header2 from './Headeradminnew2'
+import logo from '../asset/logonet.png'
 
 
 
@@ -35,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 30,
     margin: 5
   },
+  button: {
+      backgroundColor: 'red',
+      color: 'white'
+  }
 }));
 
 
@@ -64,14 +70,9 @@ console.log('test')
             
         >
             <Toolbar className={classes.toolbar}>
-                <Typography
-                    variant="h6"
-                    color="inherit"
-                    noWrap
-                    className={classes.toolbarTitle}
-                >
-                    NETPLIKS
-                </Typography>
+            <img src={logo} alt="Logo" style={{height: 30}} onClick={() => window.location.reload(false)}/>
+
+                <Header2/>
                 
             </Toolbar>
         </AppBar>

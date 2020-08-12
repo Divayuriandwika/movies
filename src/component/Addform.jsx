@@ -20,7 +20,8 @@ export default function Add() {
                                         resume: '', 
                                         rating: '', 
                                         genre : '', 
-                                        year  : '',
+										year  : '',
+										trailer: '',
 									}}
 									
 									onSubmit={async(values) => {
@@ -113,6 +114,20 @@ export default function Add() {
 													autoComplete="resume"
 													onChange={handleChange}
 													values={values.resume}
+													size="small"
+												/>
+												<TextField
+													variant="outlined"
+													style={{ marginBottom: 20}}
+													required
+													fullWidth
+													name="trailer"
+													label="Copy src of embed code trailer (example: https://www.youtube.com/embed/KK8FHdFluOQ)"
+													type="trailer"
+													id="trailer"
+													autoComplete="trailer"
+													onChange={handleChange}
+													values={values.trailer}
 													size="small"
 												/>
 												<Button

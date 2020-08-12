@@ -17,6 +17,8 @@ function Edit({movie}) {
     const [genre, setGenre] = React.useState("");
     const [rating, setRating] = React.useState("");
     const [resume, setResume] = React.useState("");
+    const [trailer, setTrailer] = React.useState("");
+
 
    useEffect(()=>{
         setTitle(movie.title)
@@ -25,6 +27,7 @@ function Edit({movie}) {
         setGenre(movie.genre)
         setRating(movie.rating)
         setResume(movie.resume)
+        setTrailer(movie.trailer)
     },[movie._id])
     console.log(title);
     
@@ -40,7 +43,8 @@ function Edit({movie}) {
             year,
             genre,
 			rating,
-			resume
+            resume,
+            trailer
         }
 
  
@@ -118,6 +122,17 @@ function Edit({movie}) {
                         fullWidth
                         value={resume||""}
 						onChange={(e) => setResume(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                    />
+                    <TextField
+                        margin="dense"
+                        id="Trailer"
+                        label="Copy src of embed code trailer (example: https://www.youtube.com/embed/KK8FHdFluOQ)"
+                        type="text"
+                        fullWidth
+                        value={trailer||""}
+						onChange={(e) => setTrailer(e.target.value)}
                         variant="outlined"
                         size="small"
                     />

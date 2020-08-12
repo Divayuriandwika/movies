@@ -7,8 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {useDispatch} from 'react-redux'
 import {getAll} from '../redux/actions/moviesAction'
 import '../App.css'
-import Button from "@material-ui/core/Button";
-import { useHistory } from 'react-router-dom';
+import Header2 from './Headerusernew2'
+import logo from '../asset/logonet.png'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Pricing() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   
   useEffect(() => {
    
@@ -70,18 +69,9 @@ console.log('test')
             
         >
             <Toolbar className={classes.toolbar}>
-                <Typography
-                    variant="h6"
-                    color="inherit"
-                    noWrap
-                    className={classes.toolbarTitle}
-                >
-                    NETPLIKS
-                </Typography>
+            <img src={logo} alt="Logo" style={{height: 30}} onClick={() => window.location.reload(false)}/>
 
-                <Button className={classes.button} onClick={() => {history.push('/')}}>
-                Logout
-                </Button>
+                <Header2/>
                 
             </Toolbar>
         </AppBar>

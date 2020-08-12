@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://moviestest-api.herokuapp.com'
+const apiUrl = 'http://localhost:3000'
 
 
 export const addMovie = (values) => {
