@@ -140,6 +140,7 @@ export const searchMovie =  (data) => {
 			 dispatch(searchMovieTitle(response.data.data)); 
             })
             .catch((error) => {
+				alert('Movie not found');
                 throw error;
             });
     };

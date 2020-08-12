@@ -188,7 +188,7 @@ export default function Dashboard() {
 									}}
 									onSubmit={async(values) => {
                                        await dispatch(loginUser(values, history));
-                                       await alert('Login Success');
+                                       await alert('Welcome to Netpliks');
                                         
 									}}
 								>

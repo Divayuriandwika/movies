@@ -41,7 +41,7 @@ export const loginUser = (values, history) => {
                 
 			})
 			.catch((error) => {
-				alert(error.response.data);
+				alert('Your email or password is incorrect or not registered yet');
 				throw error;
 			});
 	};

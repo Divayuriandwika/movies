@@ -14,8 +14,8 @@ function SearchInput() {
         
             <Formik
                 initialValues={{ title: "" }}
-                onSubmit={(values) => {
-                    dispatch(searchMovie(values));
+                onSubmit={async(values) => {
+                    await dispatch(searchMovie(values));
                     
                 }}
             >
